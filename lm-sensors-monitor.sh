@@ -31,9 +31,9 @@ cpu1=`echo ${cpu1} | sed "s/C//"`
 # test if temps are too high
 # Like I said above, this should be a "for" loop (e.g. "for x in $cpuX"), but I'm having trouble with the syntax
 
-if (( $(echo "$cpu0 $maxTemp" | awk '{print ($1 > $2)}') )); then
+if (( $(echo "$cpu0 $maxTemp" | awk '{print ($1 > $2)}') )) || (( $(echo "$cpu0 $maxTemp" | awk '{print ($1 > $2)}') ) ; then
 # send MMS to my phone via email
-  echo "CPU0: ${cpu0}C   CPU1: ${cpu1}C" | mail -s "UNSAFE TEMPERATURE!" ${mmsAddr}, ${emailAddr}
+  echo "CPU0: ${cpu0}C   CPU1: ${cpu1}C" | mail -s "UNSAFE TEMPERATURE!" ${mmsAddr},${emailAddr}
 ## Send Pushbullet notification
   ${pushbulletPath}/pushbullet_cmd.py $pushbulletAPI note $pushbulletDevice "Unsafe Temperature!" "CPU0: ${cpu0}C   CPU1: ${cpu1}C"
 fi
