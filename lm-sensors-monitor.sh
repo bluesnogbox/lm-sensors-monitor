@@ -28,6 +28,9 @@ cpu1=`echo ${arr1[2]} | sed "s/+//"`
 cpu1=`echo ${cpu1} | sed "s/°//"`
 cpu1=`echo ${cpu1} | sed "s/C//"`
 
+# daemon test
+cpu0=12
+
 # test if temps are too high
 # Like I said above, this should be a "for" loop (e.g. "for x in $cpuX"), but I'm having trouble with the syntax
 
