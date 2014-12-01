@@ -2,7 +2,7 @@
 
 # My main concern is how I should daemonize this--I have considered running it as a cron job. I have also thought about using systemd. I'd appreciate any feedback you might have
 
-maxTemp=85
+maxTemp=15
 pushbulletAPI=P81dRv12Jp7cdza1zCbxyDidnyOl7YSV
 pushbulletDevice=ufenwEfsjAiVsKnSTs
 pushbulletPath=/home/taylor/bin/pyPushBullet
@@ -28,15 +28,13 @@ cpu1=`echo ${arr1[2]} | sed "s/+//"`
 cpu1=`echo ${cpu1} | sed "s/°//"`
 cpu1=`echo ${cpu1} | sed "s/C//"`
 
-# daemon test
-cpu0=12
 
 # test if temps are too high
 # Like I said above, this should be a "for" loop (e.g. "for x in $cpuX"), but I'm having trouble with the syntax
 
 if (( $(echo "$cpu0 $maxTemp" | awk '{print ($1 > $2)}') )); then
 # send MMS to my phone via email
-  echo "CPU0: ${cpu0}C   CPU1: ${cpu1}C" | mail -s "UNSAFE TEMPERATURE!" ${mmsAddr}, ${emailAddr}
+#  echo "CPU0: ${cpu0}C   CPU1: ${cpu1}C" | mail -s "UNSAFE TEMPERATURE!" ${mmsAddr}, ${emailAddr}
 ## Send Pushbullet notification
-  ${pushbulletPath}/pushbullet_cmd.py $pushbulletAPI note $pushbulletDevice "Unsafe Temperature!" "CPU0: ${cpu0}C   CPU1: ${cpu1}C"
+  ${pushbulletPath}/pushbullet_cmd.py "${pushbulletAPI}" note "${pushbulletDevice}" "Unsafe Temperature!" "CPU0: ${cpu0}C   CPU1: ${cpu1}C"
 fi
