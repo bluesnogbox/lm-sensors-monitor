@@ -2,13 +2,13 @@
 
 # My main concern is how I should daemonize this--I have considered running it as a cron job. I have also thought about using systemd. I'd appreciate any feedback you might have
 
-maxTemp=85
-pushbulletAPI=P81dRv12Jp7cdza1zCbxyDidnyOl7YSV
-pushbulletDevice=ufenwEfsjAiVsKnSTs
-pushbulletPath=/home/taylor/bin/pyPushBullet
+maxTemp=
+pushbulletAPI=
+pushbulletDevice=
+pushbulletPath=
 #critTemp=
-mmsAddr=8149773797@att.mms.net
-emailAddr=taylor.growden@gmail.com
+mmsAddr=
+emailAddr=
 
 ## ultimately, I would like to use a "for" loop for cpu cores; unfortunately, I am having trouble with the syntax to do that
 
