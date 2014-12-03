@@ -45,7 +45,7 @@ if (( $(echo "$x $maxTemp" | awk '{print ($1 > $2)}') )); then
   notify="yes"
 fi
 done
-if [ $notify == "yes" ]; then
+if [[ $notify == "yes" ]]; then
   echo "$cpuFile" | mail -s "UNSAFE TEMPERATURE!" ${mmsAddr},${emailAddr}
 ## Send Pushbullet notification
   ${pushbulletPath}/pushbullet_cmd.py $pushbulletAPI note $pushbulletDevice "Unsafe Temperature!" "$cpuFile"
