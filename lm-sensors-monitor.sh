@@ -7,7 +7,7 @@ pushbulletAPI=P81dRv12Jp7cdza1zCbxyDidnyOl7YSV
 pushbulletDevice=ufenwEfsjAiVsKnSTs
 pushbulletPath="/home/taylor/bin/pyPushBullet"
 #critTemp=
-mmsAddr=8149773797@mms.att.net
+mmsAddr="8149773797@att.mms.net"
 emailAddr=taylor.growden@gmail.com
 
 
