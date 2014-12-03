@@ -2,13 +2,13 @@
 
 # My main concern is how I should daemonize this--I have considered running it as a cron job. I have also thought about using systemd. I'd appreciate any feedback you might have
 
-#maxTemp=15
-#pushbulletAPI=P81dRv12Jp7cdza1zCbxyDidnyOl7YSV
-#pushbulletDevice=ufenwEfsjAiVsKnSTs
-#pushbulletPath="/home/taylor/bin/pyPushBullet"
+maxTemp=75
+pushbulletAPI=P81dRv12Jp7cdza1zCbxyDidnyOl7YSV
+pushbulletDevice=ufenwEfsjAiVsKnSTs
+pushbulletPath="/home/taylor/bin/pyPushBullet"
 #critTemp=
-#mmsAddr="8149773797@att.mms.net"
-#emailAddr=taylor.growden@gmail.com
+mmsAddr="8149773797@att.mms.net"
+emailAddr=taylor.growden@gmail.com
 
 
 # testing daemonizing with a "while" loop to be called at boot
