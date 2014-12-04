@@ -9,7 +9,8 @@ pushbulletPath="/home/taylor/bin/pyPushBullet"
 #critTemp=
 mmsAddr="8149773797@att.mms.net"
 emailAddr=taylor.growden@gmail.com
-
+# Enter number of CPU cores here
+coreTotal=2
 
 ## ultimately, I would like to use a "for" loop for setting cpu core variables; I would also like to make the script allow X number of cores, which would allow it to be used on any machine. Unfortunately, I am having trouble with the syntax to do that
 
@@ -29,19 +30,22 @@ cpu1=`echo ${arr1[2]} | awk '{print substr($0, 2, length($0) - 3)}'`
 read cpu <<<$(echo $cpu0 $cpu1)
 cpu=($cpu)
 
+count=0
 for x in ${cpu[@]}; do
-if (( $(echo "$x $maxTemp" | awk '{print ($1 > $2)}') )); then
-# Append temperature for $x to /tmp/cpu; this file, and the "notify" variable, will be cleared if a message is sent. This way, this loop allows for X number of cores
-  echo "Core ${#cpu[@]}: ${x}C" >> /tmp/cpu
-  notify="yes"
-fi
+  if (( $(echo "$x $maxTemp" | awk '{print ($1 > $2)}') )); then
+    echo "Core ${count}: ${x}C" >> /tmp/cpu
+    cpuFile=`cat /tmp/cpu`
+    notify="yes"
+    count=$((count + 1))
+  fi
 done
+
+
 if [[ $notify == "yes" ]]; then
 #  echo "$cpuFile" | mail -s "UNSAFE TEMPERATURE!" ${mmsAddr},${emailAddr}
 ## Send Pushbullet notification
 #  ${pushbulletPath}/pushbullet_cmd.py $pushbulletAPI note $pushbulletDevice "Unsafe Temperature!" "$cpuFile"
-cpuFile=`cat /tmp/cpu`
-echo $cpuFile
+  echo $cpuFile
 
   rm /tmp/cpu
   notify=""
@@ -52,4 +56,4 @@ echo $cpuFile
 fi
 
 # wait 5 seconds between checking core temps
-sleep 5
+#sleep 5
