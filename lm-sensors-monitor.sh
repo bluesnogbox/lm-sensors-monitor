@@ -23,7 +23,7 @@ cpu0=`echo ${arr0[2]} | awk '{print substr($0, 2, length($0) - 3)}'`
 string1=`sensors |grep CPU1`
 arr1=($string1)
 
-cpu1=`echo ${string[2]} | awk '{print substr($0, 2, length($0) - 3)}'`
+cpu1=`echo ${arr1[2]} | awk '{print substr($0, 2, length($0) - 3)}'`
 
 # Here, I take the readings and send them to a variable, which I then split into an array. I imagine that there is probably a more elegant way to do this.
 read cpu <<<$(echo $cpu0 $cpu1)
@@ -53,4 +53,3 @@ fi
 
 # wait 5 seconds between checking core temps
 sleep 5
-
